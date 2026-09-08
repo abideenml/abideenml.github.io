@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zain ul Abideen — ML engineer, LLM post-training</title>
+<meta name="description" content="ML engineer working on post-training and reinforcement learning for medical language and vision-language models.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;450;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FCFCFA;
+    --ink:#101418;
+    --muted:#6B6B66;
+    --accent:#263C8B;
+    --rule:#E4E3DD;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    font-weight:400;
+  }
+  .wrap{max-width:660px;margin:0 auto;padding:72px 26px 96px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(38,60,139,.28)}
+  a:hover{border-bottom-color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  h1{
+    font-size:29px;font-weight:600;letter-spacing:-.02em;
+    margin:0 0 14px;line-height:1.2;
+  }
+  .lede{font-size:19px;line-height:1.55;margin:0 0 22px;max-width:56ch}
+  .links{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15.5px;margin-bottom:26px}
+
+  /* filter tabs */
+  .tabs{
+    display:flex;gap:22px;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:0;margin-bottom:6px;
+  }
+  .tabs button{
+    appearance:none;background:none;border:0;padding:0 0 8px;
+    font:inherit;font-size:16px;color:var(--muted);cursor:pointer;
+    border-bottom:2px solid transparent;margin-bottom:-1px;
+  }
+  .tabs button:hover{color:var(--ink)}
+  .tabs button[aria-selected="true"]{color:var(--ink);font-weight:600;border-bottom-color:var(--accent)}
+  .tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  h2{
+    font-size:15px;font-weight:600;letter-spacing:.01em;
+    margin:44px 0 18px;padding-bottom:7px;
+    border-bottom:1px solid var(--rule);
+  }
+  section[hidden]{display:none}
+
+  p{margin:0 0 16px;max-width:66ch}
+  .muted{color:var(--muted)}
+  .note{margin-top:14px;font-size:15.5px}
+
+  /* scale spine — parameter counts in a left gutter */
+  .scale{margin:0;padding:0;list-style:none}
+  .scale li{
+    display:grid;grid-template-columns:78px 1fr;gap:18px;
+    padding:11px 0;border-top:1px solid var(--rule);align-items:baseline;
+  }
+  .scale li:last-child{border-bottom:1px solid var(--rule)}
+  .n{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:16px;font-weight:500;color:var(--accent);
+    text-align:right;font-variant-numeric:tabular-nums;
+  }
+  .scale .what{font-size:16px}
+
+  .role{margin-bottom:26px}
+  .role h3{
+    font-size:16.5px;font-weight:600;margin:0 0 2px;
+    display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;
+  }
+  .role h3 .when{font-weight:400;font-size:14.5px;color:var(--muted)}
+  .role p{margin:4px 0 0;font-size:16px}
+
+  .items{margin:0;padding:0;list-style:none}
+  .items li{padding:9px 0;font-size:16px;border-top:1px solid var(--rule)}
+  .items li:last-child{border-bottom:1px solid var(--rule)}
+  .items .desc{color:var(--muted)}
+
+  footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-size:15px;color:var(--muted)}
+
+  @media (max-width:520px){
+    .wrap{padding:48px 20px 72px}
+    h1{font-size:25px}
+    .lede{font-size:17.5px}
+    .tabs{gap:16px}
+    .tabs button{font-size:15px}
+    .scale li{grid-template-columns:62px 1fr;gap:14px}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <h1>Zain ul Abideen</h1>
+  <p class="lede">I work on post-training and reinforcement learning for medical language and vision-language models — reward design, on-policy distillation, and evaluation of clinical reasoning.</p>
+
+  <nav class="links" aria-label="Profiles">
+    <a href="Zain_ul_Abideen_CV.pdf">CV (PDF)</a>
+    <a href="https://github.com/abideenml">GitHub</a>
+    <a href="https://huggingface.co/abideen">Hugging Face</a>
+    <a href="https://medium.com/@zaiinn440">Medium</a>
+    <a href="https://www.linkedin.com/in/zaiinulabideen/">LinkedIn</a>
+    <a href="mailto:zaiinn440@gmail.com">zaiinn440@gmail.com</a>
+  </nav>
+
+  <div class="tabs" role="tablist" aria-label="Filter sections">
+    <button role="tab" aria-selected="true" data-filter="all">All</button>
+    <button role="tab" aria-selected="false" data-filter="work">Work</button>
+    <button role="tab" aria-selected="false" data-filter="projects">Projects</button>
+    <button role="tab" aria-selected="false" data-filter="blogs">Blogs</button>
+  </div>
+
+  <section data-cat="work">
+    <h2>Now</h2>
+    <p>ML engineer at John Snow Labs, where I lead post-training for the JSL-Med model family and own medical evaluation. Before that I pre-trained small language models from scratch at QueryloopAI and spent a Mitacs research term at the University of Alberta.</p>
+  </section>
+
+  <section data-cat="work">
+    <h2>Models I've trained, by scale</h2>
+    <ul class="scale">
+      <li><span class="n">70M</span><span class="what">Llama-BitNet — 1.58-bit quantization-aware training, pre-trained from scratch</span></li>
+      <li><span class="n">500M</span><span class="what">SLM pre-trained from scratch on 15B curated synthetic tokens, 8×A100</span></li>
+      <li><span class="n">4B</span><span class="what">JSL-Med — SFT, on-policy distillation, preference optimization, RLVR</span></li>
+      <li><span class="n">8B</span><span class="what">JSL-Med — clinical entity extraction: SFT on annotation conventions to fix systematic label confusion, then GRPO on entity F1 with a span-length penalty for over- and under-extraction</span></li>
+      <li><span class="n">30B</span><span class="what">JSL-Med — oncology tasks and grounding extracted clinical findings in medical ontologies rather than free text</span></li>
+      <li><span class="n">70B</span><span class="what">JSL-Med — all four variants rank first on the Open Medical LLM Leaderboard</span></li>
+      <li><span class="n">125B</span><span class="what">Expert-pruned to single-H100 size with Cerebras REAP, then trained back to 95% of baseline medical accuracy — at roughly twice the tokens per answer</span></li>
+    </ul>
+  </section>
+
+  <section data-cat="work">
+    <h2>Work</h2>
+
+    <div class="role">
+      <h3>Machine Learning Engineer, John Snow Labs <span class="when">Dec 2024 – present</span></h3>
+      <p>Post-training across the JSL-Med family, a vision-language stack for extracting structured clinical data from handwritten medical documents, and medical evaluation end to end — clinical reasoning, calculation, error detection, race bias, and multilingual benchmarks.</p>
+    </div>
+
+    <div class="role">
+      <h3>Visiting Research Intern, University of Alberta <span class="when">Jun – Sep 2024</span></h3>
+      <p>Mitacs research term on a vision-language pipeline for automated structural analysis: images of structural systems in, executable OpenSeesPy finite-element code out. Supervised by Prof. Qipei Mei.</p>
+    </div>
+
+    <div class="role">
+      <h3>Machine Learning Engineer, Danucore <span class="when">Jun – Nov 2024</span></h3>
+      <p>A self-improving multi-agent pipeline that takes one prompt and runs to a finished result: agents plan, execute, critique their own output through an LLM-as-a-Judge loop, and re-run until it converges. Served across 30+ GPUs on multi-node infrastructure.</p>
+    </div>
+
+    <div class="role">
+      <h3>Machine Learning Engineer, QueryloopAI <span class="when">Nov 2023 – Jun 2024</span></h3>
+      <p>Pre-trained a 500M model from scratch and built the full training and evaluation pipeline. Also built Kendrick, a mixture-of-experts model with 32k experts and multi-head latent attention.</p>
+    </div>
+  </section>
+
+  <section data-cat="projects">
+    <h2>Open source</h2>
+    <ul class="items">
+      <li><a href="https://github.com/abideenml/llm.pth">llm.pth</a> <span class="desc">— wrapper-free PyTorch implementations of Llama, Mixtral, Gemma and DeepSeek, plus CoPE, YaRN, MoD, MLA, and SFT/DPO/KTO/IPO.</span></li>
+      <li><a href="https://github.com/abideenml/llama3.cuda">llama3.cuda</a> <span class="desc">— Llama 3.1 in pure C/CUDA, with hand-written SwiGLU, RoPE, RMSNorm and grouped-query attention kernels.</span></li>
+      <li><a href="https://github.com/abideenml/prime-lab-trainer">prime-lab-trainer</a> <span class="desc">— turns any HuggingFace dataset into a live GRPO run on Prime Intellect, including reward-function validation.</span></li>
+      <li><a href="https://github.com/abideenml/AutoSynth">AutoSynth</a> <span class="desc">— synthetic data generation with Self-Instruct, Magpie, Agent Instruct, Arena Learning and self-curation.</span></li>
+      <li><a href="https://github.com/abideenml/LightAgents">LightAgents</a> <span class="desc">— a dependency-free agents library with RAG, function calling, JSON mode and multi-layer memory.</span></li>
+    </ul>
+    <p class="muted note">Also 31 models and 28 datasets on <a href="https://huggingface.co/abideen">Hugging Face</a>.</p>
+  </section>
+
+  <section data-cat="blogs">
+    <h2>Writing</h2>
+    <ul class="items">
+      <li><a href="https://medium.com/@zaiinn440/moe-vs-dense-vs-hybrid-llm-architectures-9db18428dbe2">MoE vs dense vs hybrid architectures</a> <span class="desc">— trained 600M models of each for a like-for-like comparison.</span></li>
+      <li><a href="https://medium.com/@zaiinn440/schedule-free-learning-a-new-way-to-train-models-a4b4c1ba2951">Schedule-free learning</a> <span class="desc">— trained three Llama models to put a cosine schedule against a schedule-free optimizer.</span></li>
+      <li><a href="https://medium.com/@zaiinn440/llama-bitnet-training-a-1-58-bit-llm-3831e517430a">Llama-BitNet: training a 1.58-bit model</a> <span class="desc">— what 1-bit training actually changes, and a 70M model trained to show it.</span></li>
+      <li><a href="https://medium.com/@zaiinn440/mha-vs-mqa-vs-gqa-vs-mla-c6cf8285bbec">MHA vs MQA vs GQA vs MLA</a> <span class="desc">— how DeepSeek's multi-head latent attention compares against the three standard KV-cache designs.</span></li>
+      <li><a href="https://medium.com/@zaiinn440/linear-rope-vs-ntk-vs-yarn-vs-cope-d33587ddfd35">Linear RoPE vs NTK vs YaRN vs CoPE</a> <span class="desc">— four positional-encoding schemes, from linear interpolation through to contextual positions.</span></li>
+      <li><a href="https://medium.com/@zaiinn440/coding-deepseek-v2-from-scratch-in-pytorch-06dd89917067">Coding DeepSeek-V2 from scratch in PyTorch</a> <span class="desc">— multi-head latent attention, fine-grained expert segmentation and shared expert isolation, implemented end to end.</span></li>
+      <li><a href="https://medium.com/@zaiinn440/multi-gpu-training-of-70b-llm-with-deepspeed-and-fsdp-qlora-cb738a2a2229">Multi-GPU training of a 70B model with DeepSpeed and FSDP+QLoRA</a> <span class="desc">— sharding strategies for fine-tuning at 70B, and what each one costs you.</span></li>
+      <li><a href="https://medium.com/@zaiinn440/best-llm-inference-engine-tensorrt-vs-vllm-vs-lmdeploy-vs-mlc-llm-e8ff033d7615">TensorRT vs vLLM vs LMDeploy vs MLC-LLM</a> <span class="desc">— four serving stacks benchmarked head to head.</span></li>
+      <li><a href="https://medium.com/@zaiinn440/q-galore-memory-efficient-pre-training-and-fine-tuning-a31f7a1c344e">Q-GaLore</a> <span class="desc">— memory-efficient pre-training and fine-tuning when optimizer states won't fit.</span></li>
+    </ul>
+    <p class="muted note">42 posts in total on <a href="https://medium.com/@zaiinn440">Medium</a>.</p>
+  </section>
+
+  <footer>
+    Lahore, Pakistan · <a href="mailto:zaiinn440@gmail.com">zaiinn440@gmail.com</a>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.tabs button');
+  var sections = document.querySelectorAll('section[data-cat]');
+
+  function apply(filter) {
+    sections.forEach(function (s) {
+      s.hidden = !(filter === 'all' || s.dataset.cat === filter);
+    });
+    tabs.forEach(function (t) {
+      t.setAttribute('aria-selected', String(t.dataset.filter === filter));
+    });
+    // Deep-linking is a nicety: it fails in sandboxed/srcdoc frames
+    // where the origin is opaque, so never let it break the filtering.
+    try {
+      history.replaceState(null, '', filter === 'all' ? location.pathname : '#' + filter);
+    } catch (e) { /* opaque origin — skip the URL update */ }
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { apply(t.dataset.filter); });
+  });
+
+  var start = '';
+  try { start = location.hash.replace('#', ''); } catch (e) {}
+  if (['work', 'projects', 'blogs'].indexOf(start) !== -1) apply(start);
+})();
+</script>
+</body>
+</html>
