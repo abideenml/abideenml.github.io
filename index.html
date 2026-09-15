@@ -149,7 +149,9 @@
 
     <div class="role">
       <h3>Machine Learning Engineer, John Snow Labs <span class="when">Dec 2024 – present</span></h3>
-      <p>Post-training across the JSL-Med family, a vision-language stack for extracting structured clinical data from handwritten medical documents, and medical evaluation end to end — clinical reasoning, calculation, error detection, race bias, and multilingual benchmarks.</p>
+      <p>Lead post-training for the JSL-Med family (4B, 8B, 30B, 70B) — SFT, on-policy distillation, preference optimization, and RLVR — building the data curation, reward design, and training pipelines behind each release, aimed at better medical reasoning, clinical coherence, and calculation, with safety held to the same bar for handling protected health information. All four variants rank first on the Open Medical LLM Leaderboard.</p>
+      <p>Built the vision-language extraction stack for structured data from handwritten medical documents: SFT followed by field-aware asymmetric on-policy distillation, plus constrained decoding against a 12k-entity medical vocabulary — the small model lands within a point of its teacher at a third of the parameters.</p>
+      <p>Own medical evaluation end to end: clinical decision support, clinical calculation, medical error detection, race bias, oncology, entity extraction, and multilingual benchmarks, benchmarked against frontier models.</p>
     </div>
 
     <div class="role">
@@ -183,6 +185,8 @@
   <section data-cat="blogs">
     <h2>Writing</h2>
     <ul class="items">
+      <li><a href="https://medium.com/@zaiinn440/clinical-entity-extraction-with-post-training-and-constrained-decoding-e88ed7c23837">Clinical entity extraction with post-training and constrained decoding</a> <span class="desc">— constraining a 9B vision-language model to a 12,500-name drug formulary with a token-level trie, benchmarked against a generate-then-snap baseline.</span></li>
+      <li><a href="https://medium.com/@zaiinn440/post-training-qwen3-5-4b-for-spatial-reasoning-2c524b4199ca">Post-training Qwen3.5-4B for spatial reasoning</a> <span class="desc">— rejection-sampling SFT, GRPO, and on-policy distillation take a 4B model on floorplan reasoning tasks past its 27B teacher.</span></li>
       <li><a href="https://medium.com/@zaiinn440/moe-vs-dense-vs-hybrid-llm-architectures-9db18428dbe2">MoE vs dense vs hybrid architectures</a> <span class="desc">— trained 600M models of each for a like-for-like comparison.</span></li>
       <li><a href="https://medium.com/@zaiinn440/schedule-free-learning-a-new-way-to-train-models-a4b4c1ba2951">Schedule-free learning</a> <span class="desc">— trained three Llama models to put a cosine schedule against a schedule-free optimizer.</span></li>
       <li><a href="https://medium.com/@zaiinn440/llama-bitnet-training-a-1-58-bit-llm-3831e517430a">Llama-BitNet: training a 1.58-bit model</a> <span class="desc">— what 1-bit training actually changes, and a 70M model trained to show it.</span></li>
