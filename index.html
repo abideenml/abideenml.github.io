@@ -102,6 +102,7 @@
     .tabs button{font-size:15px}
     .scale li{grid-template-columns:62px 1fr;gap:14px}
   }
+  .stat{white-space:nowrap;color:var(--muted,#777);font-size:.85em;margin-left:.4em}
 </style>
 </head>
 <body>
@@ -123,6 +124,8 @@
     <button role="tab" aria-selected="true" data-filter="all">All</button>
     <button role="tab" aria-selected="false" data-filter="work">Work</button>
     <button role="tab" aria-selected="false" data-filter="projects">Projects</button>
+    <button role="tab" aria-selected="false" data-filter="ablations">Ablations</button>
+    <button role="tab" aria-selected="false" data-filter="tools">Tools</button>
     <button role="tab" aria-selected="false" data-filter="blogs">Blogs</button>
   </div>
 
@@ -175,27 +178,53 @@
     <ul class="items">
       <li><a href="https://github.com/abideenml/llm.pth">llm.pth</a> <span class="desc">— wrapper-free PyTorch implementations of Llama, Mixtral, Gemma and DeepSeek, plus CoPE, YaRN, MoD, MLA, and SFT/DPO/KTO/IPO.</span></li>
       <li><a href="https://github.com/abideenml/llama3.cuda">llama3.cuda</a> <span class="desc">— Llama 3.1 in pure C/CUDA, with hand-written SwiGLU, RoPE, RMSNorm and grouped-query attention kernels.</span></li>
-      <li><a href="https://github.com/abideenml/prime-lab-trainer">prime-lab-trainer</a> <span class="desc">— turns any HuggingFace dataset into a live GRPO run on Prime Intellect, including reward-function validation.</span></li>
       <li><a href="https://github.com/abideenml/AutoSynth">AutoSynth</a> <span class="desc">— synthetic data generation with Self-Instruct, Magpie, Agent Instruct, Arena Learning and self-curation.</span></li>
       <li><a href="https://github.com/abideenml/LightAgents">LightAgents</a> <span class="desc">— a dependency-free agents library with RAG, function calling, JSON mode and multi-layer memory.</span></li>
     </ul>
     <p class="muted note">Also 31 models and 28 datasets on <a href="https://huggingface.co/abideen">Hugging Face</a>.</p>
   </section>
 
+  <section data-cat="ablations">
+    <h2>Ablations</h2>
+    <p class="muted">Small training runs from 2024, each testing one idea against a baseline. I posted what I tried and what the numbers said as I went.</p>
+    <ul class="items">
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7190718990376222720/">MoE vs dense vs hybrid, trained side by side</a> <span class="desc">— 600M models of each type at equal total parameters. Loss curves came out almost the same, but the MoE trained at about 34k tokens/s against 18k for dense and 27k for the dense-MoE hybrid.</span> <span class="stat">👁 26.1k · 🖤 247</span></li>
+      <li><a href="https://www.linkedin.com/posts/zaiinulabideen_which-preference-tuning-technique-to-use-ugcPost-7155190702107156480-SGZM/">DPO vs IPO vs KTO: which preference tuning to use?</a> <span class="desc">— All three on TinyLlama-1.1B (Orca DPO pairs, 50 steps) and Phi-2.7B (Argilla's cleaned version, 250 steps). On MT-Bench the order was DPO, then KTO, then IPO.</span> <span class="stat">👁 34.9k · 🖤 242</span></li>
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7185645555287482369/">Does Mixture-of-Depths pay for itself?</a> <span class="desc">— Five 60M Llama variants with different routing frequency and sparsity. Training sped up by 10 to 15 percent, at a cost of 1 to 2 percent on downstream benchmarks.</span> <span class="stat">👁 33.4k · 🖤 269</span></li>
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7181657711263064064/">Can a 70M model train in 1.58 bits?</a> <span class="desc">— A BitNet-style Llama-70M pre-trained on a Cosmopedia subset on one A100, a small test of the paper's claims, with the training details and model card published.</span> <span class="stat">👁 35.9k · 🖤 400</span></li>
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7176946303883427840/">LoRA, DoRA, LaserQLoRA and a hybrid I called Daser</a> <span class="desc">— One DPO recipe on one base model, four adapter methods. The ranking flipped between benchmarks: Daser led on Nous, LaserQLoRA led on the Open LLM Leaderboard.</span> <span class="stat">👁 18.7k · 🖤 178</span></li>
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7167887501938868224/">AlphaMonarch-laser: training only half the LoRA projections</a> <span class="desc">— Scanned for the layers with the best signal-to-noise ratio and trained only those projections. The 7B model reached No. 1 on the YALL leaderboard and No. 10 among 7B models on the Open LLM Leaderboard.</span> <span class="stat">👁 18.2k · 🖤 132</span></li>
+    </ul>
+    <p class="muted note">More on <a href="https://www.linkedin.com/in/zaiinulabideen/recent-activity/all/">LinkedIn</a>.</p>
+  </section>
+
+  <section data-cat="tools">
+    <h2>Tools</h2>
+    <p class="muted">Tools and benchmarks I built for my own training and eval loops, then released.</p>
+    <ul class="items">
+      <li><a href="https://huggingface.co/spaces/deepnevro/Tokenizer-Bench">Tokenizer Bench</a> <span class="desc">— a benchmark of tokenizer efficiency. It ranks 16 frontier models by characters per token over 771.7M characters of code, agentic traces, multilingual and general text, and reports cost per character and how many extra tokens each tokenizer spends against the best. MiniMax-M3 comes out most efficient.</span></li>
+      <li><a href="https://github.com/abideenml/prime-lab-trainer">prime-lab-trainer</a> <span class="desc">— a Claude Code skill that takes a dataset name and runs RL training on Prime Intellect end to end: reward function, validation, eval, hub push and job submission. One prompt, one running job.</span> <span class="stat">👁 9.0k · 🖤 70</span> <a href="https://x.com/offpolicyy/status/2026372369103859847">Post</a></li>
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7193618083448553472/">Lazy-Llm2Vec</a> <span class="desc">— turn any LLM into an embedding model, as a notebook.</span> <span class="stat">👁 59.3k · 🖤 536</span></li>
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7158464454236549121/">AutoQuantize</a> <span class="desc">— GGUF, AWQ, EXL2 and GPTQ quantization in two clicks.</span> <span class="stat">👁 47.7k · 🖤 534</span></li>
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7191443767353131009/">AutoPose</a> <span class="desc">— extends a Llama-3-8B from 8k to 64k context with PoSE and an Axolotl config: about 7 hours and 300M tokens on 8×A6000.</span> <span class="stat">👁 41.0k · 🖤 385</span></li>
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7182019658135326720/">AutoBitnet</a> <span class="desc">— train your own 1.58-bit LLM on the Llama architecture.</span> <span class="stat">👁 37.9k · 🖤 400</span></li>
+      <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7166081059166662658/">AutoLoRA-Merging</a> <span class="desc">— merge LoRA adapters with TIES, DARE, magnitude pruning, concatenation and linear.</span> <span class="stat">👁 22.7k · 🖤 185</span></li>
+    </ul>
+  </section>
+
   <section data-cat="blogs">
     <h2>Writing</h2>
     <ul class="items">
-      <li><a href="https://medium.com/@zaiinn440/clinical-entity-extraction-with-post-training-and-constrained-decoding-e88ed7c23837">Clinical entity extraction with post-training and constrained decoding</a> <span class="desc">— constraining a 9B vision-language model to a 12,500-name drug formulary with a token-level trie, benchmarked against a generate-then-snap baseline.</span></li>
-      <li><a href="https://medium.com/@zaiinn440/post-training-qwen3-5-4b-for-spatial-reasoning-2c524b4199ca">Post-training Qwen3.5-4B for spatial reasoning</a> <span class="desc">— rejection-sampling SFT, GRPO, and on-policy distillation take a 4B model on floorplan reasoning tasks past its 27B teacher.</span></li>
-      <li><a href="https://medium.com/@zaiinn440/moe-vs-dense-vs-hybrid-llm-architectures-9db18428dbe2">MoE vs dense vs hybrid architectures</a> <span class="desc">— trained 600M models of each for a like-for-like comparison.</span></li>
-      <li><a href="https://medium.com/@zaiinn440/schedule-free-learning-a-new-way-to-train-models-a4b4c1ba2951">Schedule-free learning</a> <span class="desc">— trained three Llama models to put a cosine schedule against a schedule-free optimizer.</span></li>
-      <li><a href="https://medium.com/@zaiinn440/llama-bitnet-training-a-1-58-bit-llm-3831e517430a">Llama-BitNet: training a 1.58-bit model</a> <span class="desc">— what 1-bit training actually changes, and a 70M model trained to show it.</span></li>
-      <li><a href="https://medium.com/@zaiinn440/mha-vs-mqa-vs-gqa-vs-mla-c6cf8285bbec">MHA vs MQA vs GQA vs MLA</a> <span class="desc">— how DeepSeek's multi-head latent attention compares against the three standard KV-cache designs.</span></li>
-      <li><a href="https://medium.com/@zaiinn440/linear-rope-vs-ntk-vs-yarn-vs-cope-d33587ddfd35">Linear RoPE vs NTK vs YaRN vs CoPE</a> <span class="desc">— four positional-encoding schemes, from linear interpolation through to contextual positions.</span></li>
-      <li><a href="https://medium.com/@zaiinn440/coding-deepseek-v2-from-scratch-in-pytorch-06dd89917067">Coding DeepSeek-V2 from scratch in PyTorch</a> <span class="desc">— multi-head latent attention, fine-grained expert segmentation and shared expert isolation, implemented end to end.</span></li>
-      <li><a href="https://medium.com/@zaiinn440/multi-gpu-training-of-70b-llm-with-deepspeed-and-fsdp-qlora-cb738a2a2229">Multi-GPU training of a 70B model with DeepSpeed and FSDP+QLoRA</a> <span class="desc">— sharding strategies for fine-tuning at 70B, and what each one costs you.</span></li>
-      <li><a href="https://medium.com/@zaiinn440/best-llm-inference-engine-tensorrt-vs-vllm-vs-lmdeploy-vs-mlc-llm-e8ff033d7615">TensorRT vs vLLM vs LMDeploy vs MLC-LLM</a> <span class="desc">— four serving stacks benchmarked head to head.</span></li>
-      <li><a href="https://medium.com/@zaiinn440/q-galore-memory-efficient-pre-training-and-fine-tuning-a31f7a1c344e">Q-GaLore</a> <span class="desc">— memory-efficient pre-training and fine-tuning when optimizer states won't fit.</span></li>
+      <li><a href="https://medium.com/@zaiinn440/clinical-entity-extraction-with-post-training-and-constrained-decoding-e88ed7c23837">Clinical entity extraction with post-training and constrained decoding</a> <span class="desc">— constraining a 9B vision-language model to a 12,500-name drug formulary with a token-level trie, benchmarked against a generate-then-snap baseline.</span> <span class="stat">📖 1.7k · 🖤 2</span></li>
+      <li><a href="https://medium.com/@zaiinn440/post-training-qwen3-5-4b-for-spatial-reasoning-2c524b4199ca">Post-training Qwen3.5-4B for spatial reasoning</a> <span class="desc">— rejection-sampling SFT, GRPO, and on-policy distillation take a 4B model on floorplan reasoning tasks past its 27B teacher.</span> <span class="stat">📖 900 · 🖤 1</span></li>
+      <li><a href="https://medium.com/@zaiinn440/moe-vs-dense-vs-hybrid-llm-architectures-9db18428dbe2">MoE vs dense vs hybrid architectures</a> <span class="desc">— trained 600M models of each for a like-for-like comparison.</span> <span class="stat">📖 1.7k · 🖤 58</span></li>
+      <li><a href="https://medium.com/@zaiinn440/schedule-free-learning-a-new-way-to-train-models-a4b4c1ba2951">Schedule-free learning</a> <span class="desc">— trained three Llama models to put a cosine schedule against a schedule-free optimizer.</span> <span class="stat">📖 1.0k · 🖤 107</span></li>
+      <li><a href="https://medium.com/@zaiinn440/llama-bitnet-training-a-1-58-bit-llm-3831e517430a">Llama-BitNet: training a 1.58-bit model</a> <span class="desc">— what 1-bit training actually changes, and a 70M model trained to show it.</span> <span class="stat">📖 3.6k · 🖤 127</span></li>
+      <li><a href="https://medium.com/@zaiinn440/mha-vs-mqa-vs-gqa-vs-mla-c6cf8285bbec">MHA vs MQA vs GQA vs MLA</a> <span class="desc">— how DeepSeek's multi-head latent attention compares against the three standard KV-cache designs.</span> <span class="stat">📖 11.9k · 🖤 79</span></li>
+      <li><a href="https://medium.com/@zaiinn440/linear-rope-vs-ntk-vs-yarn-vs-cope-d33587ddfd35">Linear RoPE vs NTK vs YaRN vs CoPE</a> <span class="desc">— four positional-encoding schemes, from linear interpolation through to contextual positions.</span> <span class="stat">📖 1.7k · 🖤 7</span></li>
+      <li><a href="https://medium.com/@zaiinn440/coding-deepseek-v2-from-scratch-in-pytorch-06dd89917067">Coding DeepSeek-V2 from scratch in PyTorch</a> <span class="desc">— multi-head latent attention, fine-grained expert segmentation and shared expert isolation, implemented end to end.</span> <span class="stat">📖 2.6k · 🖤 44</span></li>
+      <li><a href="https://medium.com/@zaiinn440/multi-gpu-training-of-70b-llm-with-deepspeed-and-fsdp-qlora-cb738a2a2229">Multi-GPU training of a 70B model with DeepSpeed and FSDP+QLoRA</a> <span class="desc">— sharding strategies for fine-tuning at 70B, and what each one costs you.</span> <span class="stat">📖 2.0k · 🖤 73</span></li>
+      <li><a href="https://medium.com/@zaiinn440/best-llm-inference-engine-tensorrt-vs-vllm-vs-lmdeploy-vs-mlc-llm-e8ff033d7615">TensorRT vs vLLM vs LMDeploy vs MLC-LLM</a> <span class="desc">— four serving stacks benchmarked head to head.</span> <span class="stat">📖 9.7k · 🖤 287</span></li>
     </ul>
     <p class="muted note">42 posts in total on <a href="https://medium.com/@zaiinn440">Medium</a>.</p>
   </section>
@@ -231,7 +260,7 @@
 
   var start = '';
   try { start = location.hash.replace('#', ''); } catch (e) {}
-  if (['work', 'projects', 'blogs'].indexOf(start) !== -1) apply(start);
+  if (['work', 'projects', 'ablations', 'tools', 'blogs'].indexOf(start) !== -1) apply(start);
 })();
 </script>
 </body>
